@@ -1,10 +1,10 @@
 <form>
-    <input #query type="text"
-        (keyup)="getEmployee()"
+    <input #query type="text" placeholder="Type in employee name"
+        (input)="getEmployee($event.target.value)"
     >
     <ul>
         <li *ngFor="#employee of employees">
-            <h1>{{ employee }}</h1>
+            <h3>{{ employee.firstName }} {{ employee.lastName }}</h3>
         </li>
     </ul>
 </form>

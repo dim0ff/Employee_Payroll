@@ -1,8 +1,19 @@
 form {
-    text-align: center;
+    text-align:                 center;
+    background-color:           #fff;
 }
 
 form > input {
-    position: relative;
-    top: 150px;
+    position:                   relative;
+    top:                        150px;
+}
+
+ul {
+    position:                   relative;
+    top:                        170px;
+    margin:                     0 auto;
+}
+
+ul > li > h3 {
+    font-size:                  1em;
 }
