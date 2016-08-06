@@ -1,0 +1,10 @@
+<form>
+    <input #query type="text"
+        (keyup)="getEmployee()"
+    >
+    <ul>
+        <li *ngFor="#employee of employees">
+            <h1>{{ employee }}</h1>
+        </li>
+    </ul>
+</form>

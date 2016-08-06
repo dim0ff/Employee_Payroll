@@ -1,0 +1,8 @@
+form {
+    text-align: center;
+}
+
+form > input {
+    position: relative;
+    top: 150px;
+}
