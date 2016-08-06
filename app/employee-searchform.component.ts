@@ -407,7 +407,7 @@ export class EmployeeSearchformComponent {
     }
 
     getEmployee(name) {
-        this.http.get('localhost:3000/employees')
+        this.http.get('http://localhost:3000/employees')
         //convert the response object to just data
             .map(res=> res.json())
             //responds with an observable
