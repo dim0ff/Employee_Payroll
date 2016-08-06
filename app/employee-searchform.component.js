@@ -29,6 +29,7 @@ System.register(['angular2/core', "./employees-data.service", "./search.pipe", '
                 function EmployeeSearchformComponent(employeeDataService) {
                     this.employeeDataService = employeeDataService;
                     this.query = "";
+                    this.employeeListExpanded = false;
                     this.employees = [];
                     this.selectedEmployees = [];
                     this.employeeSelected = false;

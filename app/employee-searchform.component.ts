@@ -11,6 +11,7 @@ import 'rxjs/Rx';
 })
 export class EmployeeSearchformComponent {
     query = "";
+    employeeListExpanded = false;
     employees = [];
     selectedEmployees = [];
     employeeSelected = false;

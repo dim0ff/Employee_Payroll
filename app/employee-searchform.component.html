@@ -1,24 +1,27 @@
 <!--<span *ngIf="query">Search for: {{ query }}</span>-->
 <input #search id="searchfield" type="text" placeholder="Type in employee name"
        [(ngModel)]="query"
-       (blur)="collapseEmployeeList()"
+       (input)="employeeListExpanded=true"
+       [value]=""
 >
 <!--(keyup)="getEmployee($event.target.value)"-->
-<ul id="employee-list" *ngIf="search.value !=''">
+<ul id="employee-list" *ngIf="employeeListExpanded;">
     <li *ngFor="#employee of (employees) | filter:query"
-        (click)="employeeSelected=true; showSelectedEmployee(employee.id)">
+        (click)="employeeSelected=true; employeeListExpanded=false; showSelectedEmployee(employee.id)">
         <h3>{{ employee.title }} {{ employee.firstName }} {{ employee.surname }}</h3>
     </li>
 </ul>
-<section *ngIf="employeeSelected">
-    <ul>
+<section id="selected-employees" *ngIf="employeeSelected">
+    <ul id="selected-employees-list">
         <li *ngFor="#selectedEmployee of selectedEmployees">
             <h3>{{ selectedEmployee.title }} {{ selectedEmployee.firstName }} {{ selectedEmployee.surname }}, {{ selectedEmployee.age }}</h3>
-            <h4>born on {{ selectedEmployee.DOB }}</h4>
-            <h4>Base salary: {{ selectedEmployee.salary }}</h4>
-            <h4>Takes Home {{ selectedEmployee.takeHome }}</h4>
-            <h4>Income Tax: {{ selectedEmployee.incomeTax }}</h4>
-            <h4>individual's national insurance costs: {{ selectedEmployee.nationalInsurance }}</h4>
+            <br>
+            <h4>born on             {{ selectedEmployee.DOB }}</h4>
+            <br>
+            <h4>Base salary:        {{ selectedEmployee.salary }}</h4>
+            <h4>Income Tax:         {{ selectedEmployee.incomeTax }}</h4>
+            <h4>National insurance: {{ selectedEmployee.nationalInsurance }}</h4>
+            <h4 class="takes-home">Takes Home:         {{ selectedEmployee.takeHome }}</h4>
         </li>
     </ul>
 </section>
