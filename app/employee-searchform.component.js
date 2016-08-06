@@ -30,11 +30,20 @@ System.register(['angular2/core', "./employees-data.service", "./search.pipe", '
                     this.employeeDataService = employeeDataService;
                     this.query = "";
                     this.employees = [];
+                    this.selectedEmployees = [];
+                    this.employeeSelected = false;
                 }
                 EmployeeSearchformComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this.employeeDataService.getEmployees()
                         .subscribe(function (employeesObj) { return _this.employees = employeesObj; });
+                };
+                EmployeeSearchformComponent.prototype.showSelectedEmployee = function (id) {
+                    for (var i = 0; i < this.employees.length; i += 1) {
+                        if (id === this.employees[i].id) {
+                            this.selectedEmployees.push(this.employees[i]);
+                        }
+                    }
                 };
                 EmployeeSearchformComponent = __decorate([
                     core_1.Component({
