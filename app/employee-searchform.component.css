@@ -5,13 +5,19 @@ form {
 
 form > input {
     position:                   relative;
-    top:                        150px;
+    top:                        30px;
 }
 
 ul {
     position:                   relative;
-    top:                        170px;
+    top:                        40px;
     margin:                     0 auto;
+    width:                      300px;
+    list-style:                 none;
+}
+
+ul > li {
+    border-bottom:              1px solid #d3d3d3;
 }
 
 ul > li > h3 {

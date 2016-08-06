@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {FormBuilder} from 'angular2/common';
 import {Http} from 'angular2/http';
+import {EmployeeSearchformService} from "./employees-data.service";
 import 'rxjs/Rx';
 
 @Component({
@@ -408,7 +409,7 @@ export class EmployeeSearchformComponent {
 
     getEmployee(name) {
         this.http.get('http://localhost:3000/employees')
-        //convert the response object to just data
+        //convert the observable response object to just data
             .map(res=> res.json())
             //responds with an observable
             .subscribe(

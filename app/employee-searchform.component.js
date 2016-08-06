@@ -424,7 +424,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/http', 'rxjs/Rx']
                 }
                 EmployeeSearchformComponent.prototype.getEmployee = function (name) {
                     var _this = this;
-                    this.http.get('localhost:3000/employees')
+                    this.http.get('http://localhost:3000/employees')
                         .map(function (res) { return res.json(); })
                         .subscribe(function (employeeData) {
                         _this.employees = employeeData;

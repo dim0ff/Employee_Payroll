@@ -4,7 +4,10 @@
     >
     <ul>
         <li *ngFor="#employee of employees">
-            <h3>{{ employee.firstName }} {{ employee.lastName }}</h3>
+            <h3>
+                <a href="#" (click)="getEmployee($event.target.value)"
+                >{{ employee.firstName }} {{ employee.surname }}</a>
+            </h3>
         </li>
     </ul>
 </form>

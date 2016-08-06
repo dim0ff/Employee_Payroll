@@ -10,5 +10,5 @@ import { EmployeeSearchformComponent } from './employee-searchform.component';
 export class AppComponent implements OnInit {
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {}
 }
