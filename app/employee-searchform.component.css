@@ -3,21 +3,32 @@ form {
     background-color:           #fff;
 }
 
-form > input {
+#searchfield {
     position:                   relative;
     top:                        30px;
+    width:                      260px;
 }
 
-ul {
+#employee-list {
     position:                   relative;
-    top:                        40px;
+    top:                        29px;
     margin:                     0 auto;
-    width:                      300px;
+    width:                      258px;
     list-style:                 none;
+    border:                     1px solid #d3d3d3;
+    -webkit-box-shadow:         10px 11px 22px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow:            10px 11px 22px -5px rgba(0,0,0,0.75);
+    box-shadow: 10px            11px 22px -5px rgba(0,0,0,0.75);
 }
 
-ul > li {
-    border-bottom:              1px solid #d3d3d3;
+li:hover {
+            background-color:   #FFF6E0;
+    cursor:                     pointer;
+}
+
+a {
+    color:                      #000;
+    text-decoration:            none;
 }
 
 ul > li > h3 {

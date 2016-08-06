@@ -1,13 +1,13 @@
 <form>
-    <input #query type="text" placeholder="Type in employee name"
-        (input)="getEmployee($event.target.value)"
+    <!--<span *ngIf="query">Search for: {{ query }}</span>-->
+    <input #search id="searchfield" type="text" placeholder="Type in employee name"
+           [(ngModel)]="query"
     >
-    <ul>
-        <li *ngFor="#employee of employees">
-            <h3>
-                <a href="#" (click)="getEmployee($event.target.value)"
-                >{{ employee.firstName }} {{ employee.surname }}</a>
-            </h3>
+    <!--(keyup)="getEmployee($event.target.value)"-->
+    <ul id="employee-list" *ngIf="search.value !=''">
+        <li *ngFor="#employee of employees"
+            (click)="getEmployees($event.target.value)">
+            <h3>{{ employee.title }} {{ employee.firstName }} {{ employee.surname }}</h3>
         </li>
     </ul>
 </form>

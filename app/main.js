@@ -20,7 +20,7 @@ System.register(['angular2/platform/browser', "angular2/http", './app.component'
             //inject all services at bootstrap, as opposed to individually in the providers metadata field
             browser_1.bootstrap(app_component_1.AppComponent, [
                 http_1.HTTP_PROVIDERS,
-                employees_data_service_1.EmployeeSearchformService
+                employees_data_service_1.EmployeeDataService
             ]);
         }
     }
