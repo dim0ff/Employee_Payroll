@@ -7,9 +7,9 @@
         "postinstall": "npm run typings install",
         "tsc": "tsc",
         "tsc:w": "tsc -w",
-        "lite": "lite-server",
         "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
-        "typings": "typings"
+        "typings": "typings",
+        "test":"mocha"
     },
     "license": "MIT",
     "dependencies": {
@@ -23,9 +23,8 @@
         "server-json": "*"
     },
     "devDependencies": {
-        "concurrently": "^2.0.0",
         "typescript": "^1.8.2",
         "typings": "^0.6.8",
-        "mocha": "3.0.1"
+        "mocha": "^3.0.1"
     }
 }
