@@ -23,10 +23,11 @@ export class EmployeeSearchformComponent {
             .subscribe((employeesObj) => this.employees = employeesObj)
     }
 
-    showSelectedEmployee(id) {
+    ouputSelectedEmployee(name, age) {
         for (let i = 0; i < this.employees.length; i += 1) {
-            if (id === this.employees[i].id) {
+            if (name === this.employees[i].firstName && age == this.employees[i].age) {
                 this.selectedEmployees.push(this.employees[i]);
+                this.employees.splice(i, 1);
             }
         }
     }

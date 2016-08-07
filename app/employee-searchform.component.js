@@ -39,10 +39,11 @@ System.register(['angular2/core', "./employees-data.service", "./search.pipe", '
                     this.employeeDataService.getEmployees()
                         .subscribe(function (employeesObj) { return _this.employees = employeesObj; });
                 };
-                EmployeeSearchformComponent.prototype.showSelectedEmployee = function (id) {
+                EmployeeSearchformComponent.prototype.ouputSelectedEmployee = function (name, age) {
                     for (var i = 0; i < this.employees.length; i += 1) {
-                        if (id === this.employees[i].id) {
+                        if (name === this.employees[i].firstName && age == this.employees[i].age) {
                             this.selectedEmployees.push(this.employees[i]);
+                            this.employees.splice(i, 1);
                         }
                     }
                 };
