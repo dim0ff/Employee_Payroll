@@ -39,9 +39,9 @@ System.register(['angular2/core', "./employees-data.service", "./search.pipe", '
                     this.employeeDataService.getEmployees()
                         .subscribe(function (employeesObj) { return _this.employees = employeesObj; });
                 };
-                EmployeeSearchformComponent.prototype.ouputSelectedEmployee = function (name, age) {
+                EmployeeSearchformComponent.prototype.ouputSelectedEmployee = function (id) {
                     for (var i = 0; i < this.employees.length; i += 1) {
-                        if (name === this.employees[i].firstName && age == this.employees[i].age) {
+                        if (id === this.employees[i].id) {
                             this.selectedEmployees.push(this.employees[i]);
                             this.employees.splice(i, 1);
                         }

@@ -23,9 +23,9 @@ export class EmployeeSearchformComponent {
             .subscribe((employeesObj) => this.employees = employeesObj)
     }
 
-    ouputSelectedEmployee(name, age) {
+    ouputSelectedEmployee(id) {
         for (let i = 0; i < this.employees.length; i += 1) {
-            if (name === this.employees[i].firstName && age == this.employees[i].age) {
+            if (id === this.employees[i].id) {
                 this.selectedEmployees.push(this.employees[i]);
                 this.employees.splice(i, 1);
             }

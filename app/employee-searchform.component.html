@@ -1,15 +1,13 @@
-<!--<span *ngIf="query">Search for: {{ query }}</span>-->
 <input #search id="searchfield" type="text" placeholder="Type in employee name"
        [(ngModel)]="query"
        (input)="employeeListExpanded=true"
        [value]=""
 >
-<!--(keyup)="getEmployee($event.target.value)"-->
 <template [ngIf]="search.value!=''">
     <ul id="employee-list" *ngIf="employeeListExpanded;">
         <li *ngFor="#employee of (employees) | filter:query"
-            (click)="employeeSelected=true; employeeListExpanded=false; ouputSelectedEmployee(employee.firstName, employee.age)"
-            (keyup.enter)="employeeSelected=true; employeeListExpanded=false; ouputSelectedEmployee(employee.firstName, employee.age)">
+            (click)="employeeSelected=true; employeeListExpanded=false; ouputSelectedEmployee(employee.id)"
+            (keyup.enter)="employeeSelected=true; employeeListExpanded=false; ouputSelectedEmployee(employee.id)">
             <h3>{{ employee.title }} {{ employee.firstName }} {{ employee.surname }}</h3>
         </li>
     </ul>
