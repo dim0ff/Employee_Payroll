@@ -5,19 +5,21 @@ Run:
 
     npm install
 
-Start up the mock JSON API, containing all our employee data:
+** It's running fine with Node v6.3.1 and NPM 3.10.3. If errors, you might need to update **
+
+Start up the mock JSON API, containing all our employee data (run in the project root dir):
 
     server-json --watch db.json
 
-It should be running on 
+running on:
 
     localhost:3000
     
-Our documents should be at:
+Our documents endpoint should be at:
 
     localhost:3000/employees 
     
-Start:
+Start (preferrably on a server, to avoid CORS errors):
     
     index.html
   
