@@ -11,7 +11,7 @@ Start up the mock JSON API, containing all our employee data (run in the project
 
     server-json --watch db.json
 
-running on:
+on Windows running at:
 
     localhost:3000
     
