@@ -29,6 +29,9 @@ To perform tests, make sure you:
     npm install -g webdriver-manager protractor
 
 run:	
+    
     webdriver-manager start
+    
 to start up a Selenium server. Then navigate to /tests and run:
+
     protractor conf.js
