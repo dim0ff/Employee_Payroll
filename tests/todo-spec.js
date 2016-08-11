@@ -1,17 +1,19 @@
 describe('modal component', function () {
-    it('should output the employee and delete it from the array', function () {
-        browser.wait(function () {
-            return element(by.id('searchfield')).isPresent();
-        }).then(function () {
-            browser.get('http://localhost:80/Fourth/Fourth/');
-
-            var searchField = element(by.id('searchfield'));
-            searchField.click();
-            searchField.sendKeys('Skye');
-            searchField.getText().then(function (text) {
-                console.log(text);
-            });
-            var employeeListItem = element(by.id('employee-list'));
-        });
+    it('should autocomplete the selected employee', function () {
+        browser.get('http://localhost:80/Fourth/Fourth/');
+        //select the input field
+        var searchField = element(by.id('searchfield'));
+        var query = "Skye";
+        searchField.sendKeys(query);
+        //dropdown menu not expanding
+        //var employeeMatch = element.all(by.css('.employee')).first().getText();
+        expect(searchField.getAttribute('value')).toEqual(query)
     });
 });
+
+describe('should output the selected employee', function () {
+});
+describe('modal component', function () {
+});
+
+
