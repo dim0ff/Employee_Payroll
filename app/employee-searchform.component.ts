@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {EmployeeDataService} from "./employees-data.service";
+import {EmployeesDataService} from "./employees-data.service";
 import {SearchPipe} from "./search.pipe";
 import 'rxjs/Rx';
 
@@ -15,12 +15,22 @@ export class EmployeeSearchformComponent {
     employees = [];
     selectedEmployees = [];
     employeeSelected = false;
+    employee;
 
-    constructor(private employeeDataService:EmployeeDataService) {}
+    constructor(private employeesDataService: EmployeesDataService) {}
 
     ngOnInit() {
-        this.employeeDataService.getEmployees()
-            .subscribe((employeesObj) => this.employees = employeesObj)
+        this.employeesDataService.getEmployees(4)
+            .subscribe(employees => {
+                this.employees = employees;
+            })
+    }
+
+    getEmployeeById(id) {
+        this.employeesDataService.getEmployeeById(id)
+            .subscribe(employee => {
+                this.employee = employee;
+            })
     }
 
     ouputSelectedEmployee(id) {

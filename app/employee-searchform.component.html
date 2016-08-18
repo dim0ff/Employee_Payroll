@@ -1,14 +1,19 @@
 <input #search id="searchfield" type="text" placeholder="Type in employee name"
        [(ngModel)]="query"
        (input)="employeeListExpanded=true"
-       [value]=""
 >
+
+<div *ngIf="employee">
+    <h1>{{ employee.name }}</h1>
+</div>
+
+<input (input)="getEmployeeById($event.target.value)" type="text" placeholder="enter specific id (1 - 30)">
 <template [ngIf]="search.value!=''">
     <ul id="employee-list" *ngIf="employeeListExpanded;">
         <li *ngFor="#employee of (employees) | filter:query"
             (click)="employeeSelected=true; employeeListExpanded=false; ouputSelectedEmployee(employee.id)"
             (keyup.enter)="employeeSelected=true; employeeListExpanded=false; ouputSelectedEmployee(employee.id)">
-            <h3>{{ employee.title }} {{ employee.firstName }} {{ employee.surname }}</h3>
+            <h3 class="employee">{{ employee.title }} {{ employee.firstName }} {{ employee.surname }}</h3>
         </li>
     </ul>
 </template>
@@ -17,7 +22,7 @@
         <li *ngFor="#selectedEmployee of selectedEmployees">
             <h3>{{ selectedEmployee.title }} {{ selectedEmployee.firstName }} {{ selectedEmployee.surname }}, {{
                 selectedEmployee.age }}</h3>
-            <br>
+            <br> 
             <h4>born on {{ selectedEmployee.DOB }}</h4>
             <br>
             <h4>Base salary: {{ selectedEmployee.salary }}</h4>

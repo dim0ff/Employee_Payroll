@@ -10,15 +10,39 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['systemjs', 'webpack'],
+    systemjs: {
+      // Path to your SystemJS configuration file
+      configFile: './system.conf.js',
 
+      // Patterns for files that you want Karma to make available, but not loaded until a module requests them. eg. Third-party libraries.
+      serveFiles: [
+        'lib/**/*.js'
+      ],
+
+      // SystemJS configuration specifically for tests, added after your config file.
+      // Good for adding test libraries and mock modules
+      config: {
+        paths: {
+          'plugin-babel': 'node_modules/systemjs-plugin-babel/plugin-babel.js',
+          'systemjs-babel-build': 'node_modules/systemjs-plugin-babel/systemjs-babel-browser.js',
+          'systemjs': 'node_modules/systemjs/dist/system.js',
+          'system-polyfills': 'node_modules/systemjs/dist/system-polyfills.js',
+          'es6-module-loader': 'node_modules/es6-module-loader/dist/es6-module-loader.js'
+        }
+      }
+    },
+
+    systemjs: {
+      configFile: './system.conf.js'
+    },
+
+    plugins: ['karma-systemjs','systemjs', 'karma-chrome-launcher', 'webpack'],
 
     // list of files / patterns to load in the browser
     files: [
-      'app/**/*.spec.js',
-      'test/**/*.spec.js'
+      'app/employee-searchform.component.spec.js'
     ],
-
 
     // list of files to exclude
     exclude: [
@@ -28,8 +52,13 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'app/**/*.spec.js':['webpack']
     },
 
+    browserify: {
+      debug: true,
+      transform: ['brfs','browserify-shim']
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

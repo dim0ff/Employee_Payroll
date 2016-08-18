@@ -26,8 +26,8 @@ System.register(['angular2/core', "./employees-data.service", "./search.pipe", '
             function (_1) {}],
         execute: function() {
             EmployeeSearchformComponent = (function () {
-                function EmployeeSearchformComponent(employeeDataService) {
-                    this.employeeDataService = employeeDataService;
+                function EmployeeSearchformComponent(employeesDataService) {
+                    this.employeesDataService = employeesDataService;
                     this.query = "";
                     this.employeeListExpanded = false;
                     this.employees = [];
@@ -36,8 +36,17 @@ System.register(['angular2/core', "./employees-data.service", "./search.pipe", '
                 }
                 EmployeeSearchformComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    this.employeeDataService.getEmployees()
-                        .subscribe(function (employeesObj) { return _this.employees = employeesObj; });
+                    this.employeesDataService.getEmployees(4)
+                        .subscribe(function (employees) {
+                        _this.employees = employees;
+                    });
+                };
+                EmployeeSearchformComponent.prototype.getEmployeeById = function (id) {
+                    var _this = this;
+                    this.employeesDataService.getEmployeeById(id)
+                        .subscribe(function (employee) {
+                        _this.employee = employee;
+                    });
                 };
                 EmployeeSearchformComponent.prototype.ouputSelectedEmployee = function (id) {
                     for (var i = 0; i < this.employees.length; i += 1) {
@@ -54,7 +63,7 @@ System.register(['angular2/core', "./employees-data.service", "./search.pipe", '
                         styleUrls: ['app/employee-searchform.component.css'],
                         pipes: [search_pipe_1.SearchPipe]
                     }), 
-                    __metadata('design:paramtypes', [employees_data_service_1.EmployeeDataService])
+                    __metadata('design:paramtypes', [employees_data_service_1.EmployeesDataService])
                 ], EmployeeSearchformComponent);
                 return EmployeeSearchformComponent;
             }());

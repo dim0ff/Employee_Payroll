@@ -1,4 +1,4 @@
-System.register(['angular2/core', './employee-searchform.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './employee-searchform.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,15 @@ System.register(['angular2/core', './employee-searchform.component'], function(e
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, employee_searchform_component_1;
+    var core_1, router_1, employee_searchform_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
             function (employee_searchform_component_1_1) {
                 employee_searchform_component_1 = employee_searchform_component_1_1;
@@ -26,6 +29,10 @@ System.register(['angular2/core', './employee-searchform.component'], function(e
                 }
                 AppComponent.prototype.ngOnInit = function () { };
                 AppComponent = __decorate([
+                    router_1.RouteConfig([
+                        { path: "/employees/:id", component: employee_searchform_component_1.EmployeeSearchformComponent, name: 'List' },
+                        { path: "/employees", component: employee_searchform_component_1.EmployeeSearchformComponent }
+                    ]),
                     core_1.Component({
                         selector: 'app',
                         directives: [employee_searchform_component_1.EmployeeSearchformComponent],

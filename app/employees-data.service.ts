@@ -1,20 +1,30 @@
-import {Http} from 'angular2/http';
+import {Http, URLSearchParams} from 'angular2/http';
 import {Injectable} from 'angular2/core';
-import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
-//signifies the class will be part of the DI plan
+//since this is a service we built, ng doesn't know by default this is eligible for injection
 @Injectable()
-export class EmployeeDataService {
+export class EmployeesDataService {
     employees = [];
 
-    constructor(private http: Http) {}
+    constructor(private http: Http,
+                private searchParams: URLSearchParams) {}
 
-    getEmployees() {
-        return this.http.get('http://localhost:3000/employees')
-            //convert the observable response objects to just data
+    getEmployees(id) {
+        return this.http.get('localhost:3000/employees')
             .map(res => {
-                console.log(res);
-                return res.json()
-            });
+                //unwrap the payload from the returned observable object
+                return res.json();
+            })
+    }
+
+    getEmployeeById(id) {
+        this.searchParams.append("id", id);
+                                                //second arg of RequestOptionsArgs
+        return this.http.get('localhost:3000/employees', {search: this.searchParams })
+            .map(res => {
+                //unwrap the payload from the returned observable object
+                return res.json();
+            })
     }
 }
